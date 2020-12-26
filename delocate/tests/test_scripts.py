@@ -350,7 +350,7 @@ def test_add_platforms():
     # Check adding platform to wheel name and tag section
     exp_items = [('Generator', 'bdist_wheel {pip_version}'),
                  ('Root-Is-Purelib', 'false'),
-                 ('Tag', '{pyver}-{abi}-macosx_10_6_intel'),
+                 ('Tag', '{pyver}-{abi}-macosx_10_9_intel'),
                  ('Wheel-Version', '1.0')]
     assert_winfo_similar(PLAT_WHEEL, exp_items, drop_version=False)
     with InTemporaryDirectory() as tmpdir:
