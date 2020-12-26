@@ -352,6 +352,9 @@ def test_add_platforms():
                  ('Root-Is-Purelib', 'false'),
                  ('Tag', '{pyver}-{abi}-macosx_10_9_intel'),
                  ('Wheel-Version', '1.0')]
+    print("torch")
+    print(PLAT_WHEEL)
+    print(exp_items)
     assert_winfo_similar(PLAT_WHEEL, exp_items, drop_version=False)
     with InTemporaryDirectory() as tmpdir:
         # First wheel needs proper wheel filename for later unpack test
