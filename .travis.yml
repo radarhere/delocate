@@ -17,7 +17,6 @@ matrix:
   include:
       - env:
           - MB_PYTHON_VERSION=2.7.17
-          - MB_PYTHON_OSX_VER=10.6
           - BUILD_WHEELS=1
 
 install:
