@@ -350,7 +350,7 @@ def test_add_platforms():
     # Check adding platform to wheel name and tag section
     exp_items = [('Generator', 'bdist_wheel {pip_version}'),
                  ('Root-Is-Purelib', 'false'),
-                 ('Tag', '{pyver}-{abi}-macosx_10_9_intel'),
+                 ('Tag', '{pyver}-{abi}-macosx_10_9_x86_64'),
                  ('Wheel-Version', '1.0')]
     print("torch")
     print(PLAT_WHEEL)
