@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import logging
 import os
+import struct
 import sys
 import warnings
 from collections.abc import Iterable, Iterator
@@ -455,7 +456,9 @@ def tree_libs(
     return lib_dict
 
 
-_default_paths_to_search = ("/usr/local/lib", "/usr/lib")
+_default_paths_to_search = ["/usr/local/lib", "/usr/lib"]
+if struct.calcsize("l") == 8:
+    _default_paths_to_search.append("/usr/local/lib64")
 
 
 def resolve_dynamic_paths(
