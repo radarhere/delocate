@@ -786,6 +786,7 @@ def get_environment_variable_paths():
     extra_paths = ["DYLD_LIBRARY_PATH", "DYLD_FALLBACK_LIBRARY_PATH"]
     for pathname in extra_paths:
         path_contents = os.environ.get(pathname)
+        print("torch get", pathname, path_contents)
         if path_contents is not None:
             for path in path_contents.split(os.pathsep):
                 env_var_paths.append(path)

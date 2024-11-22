@@ -82,6 +82,7 @@ def get_dependencies(
     DependencyNotFound
         When `lib_fname` does not exist.
     """
+    print("get_dependencies", lib_fname)
     if not filt_func(lib_fname):
         logger.debug(f"Ignoring dependencies of {lib_fname}")
         return
@@ -95,6 +96,7 @@ def get_dependencies(
         raise DependencyNotFound(lib_fname)
     rpaths = get_rpaths(lib_fname) + get_environment_variable_paths()
     for install_name in get_install_names(lib_fname):
+        print("install_name", install_name)
         try:
             if install_name.startswith("@"):
                 dependency_path = resolve_dynamic_paths(
@@ -124,6 +126,7 @@ def get_dependencies(
             if install_name.startswith("@rpath"):
                 message += "\n  Search path:\n    " + "\n    ".join(rpaths)
             logger.error(message)
+            print("here", message)
             # At this point install_name is known to be a bad path.
             yield None, install_name
 
@@ -180,7 +183,7 @@ def walk_library(
     ):
         if dependency_fname is None:
             logger.error(
-                "%s not found, requested by %s",
+                "%s not foundtorch, requested by %s",
                 install_name,
                 lib_fname,
             )
@@ -506,6 +509,7 @@ def resolve_dynamic_paths(
     ):
         return realpath(lib_path)
 
+    print("lib_path", lib_path, "rpaths", rpaths)
     if lib_path.startswith("@loader_path/"):
         paths_to_search = [loader_path]
     elif lib_path.startswith("@executable_path/"):
@@ -516,6 +520,7 @@ def resolve_dynamic_paths(
     # these paths are searched by the macos loader in order if the
     # library is not in the previous paths.
     paths_to_search.extend(_default_paths_to_search)
+    print("paths_to_search", paths_to_search)
 
     rel_path = lib_path.split("/", 1)[1]
     for prefix_path in paths_to_search:

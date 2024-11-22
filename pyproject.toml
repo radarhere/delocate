@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "delocate"
-dynamic = ["version"]
+version = "0.13"
 description = "Move macOS dynamic libraries into package"
 authors = [{ name = "Matthew Brett", email = "matthew.brett@gmail.com" }]
 maintainers = [{ name = "Matthew Brett", email = "matthew.brett@gmail.com" }]
